@@ -1,0 +1,30 @@
+frame:
+  x: 75
+  y: 75
+  width: 975
+  height: 675
+
+title:
+  x: 90
+  y: 25
+  width: 635
+  height: 50
+  align: center
+  font_size: 28
+
+oneshot:
+  x: 90
+  y: 75
+  width: 635
+  height: 50
+  align: center
+  font_size: 20
+
+fixture:
+  x: 735
+  y: 1100
+  width: 635
+  height: 50
+  align: center
+  font_size: 20
+  angle: 3.141592653589793
