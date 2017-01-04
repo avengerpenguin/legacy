@@ -1,5 +1,8 @@
 language: ruby
 
+python:
+  - "3.5"
+
 before_install:
   - sudo apt-get install -V -y libgirepository1.0-dev
   - rvm install 2.4.0
