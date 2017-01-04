@@ -15,4 +15,6 @@ install:
   - bundle install
   - sudo pip install ghp-import
 
-script: bundle exec rake deck page && ghp-import _output
+script:
+  - bundle exec rake
+  - ghp-import _output
