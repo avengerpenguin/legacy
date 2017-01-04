@@ -1,16 +1,26 @@
 require 'squib'
 
-Squib::Deck.new(layout: 'layout-fortune.yml') do
+Squib::Deck.new(layout: 'layouts/layout-fortune.yml') do
   background color: 'white'
-  data = csv file: 'fortunes.csv'
-
-  rect x: 20, y: 70, width: 785, height: 1035, radius: 8
+  data = csv file: 'data/fortunes.csv'
 
   text str: data['title'], layout: 'title'
-  text str: data['temp'], layout: 'oneshot'
-  text str: data['perm'], layout: 'fixture'
+  svg file: data['icon'],
+      width: 500, height: 500,
+      x: 150, y: 140
 
-  save format: :png
+  rect x: 20, y: 640, width: 785, height: 465, radius: 8
+
+  text str: data['temp_title'], layout: 'Oneshot'
+  text str: data['temp_bonus'], layout: 'OneshotBonus'
+  svg file: data['temp_type'], layout: 'OneshotBonusType'
+
+  text str: data['perm_title'], layout: 'Fixture'
+  text str: data['perm_bonus'], layout: 'FixtureBonus'
+  svg file: data['perm_type'], layout: 'FixtureBonusType'
+
+  save_png prefix: 'fortune_'
+  showcase file: 'showcase_fortune.png', fill_color: '#0000'
 end
 
 #Squib::Deck.new(cards: 3, layout: 'misfortune-layout.yml') do

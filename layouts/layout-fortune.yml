@@ -1,0 +1,49 @@
+title:
+  x: 90
+  y: 25
+  width: 635
+  height: 50
+  align: center
+  font: Rock Salt
+  font_size: 36
+
+Oneshot:
+  x: 90
+  y: 645
+  width: 635
+  height: 50
+  align: center
+  font: Rock Salt
+  font_size: 32
+
+OneshotBonus:
+  extends: Oneshot
+  y: += 100
+  x: -= 20
+  font: Fira Mono
+  font_size: 24
+
+OneshotBonusType:
+  extends: OneshotBonus
+  x: 405
+  y: -= 5
+  width: 50
+  height: 50
+
+Fixture:
+  extends: Oneshot
+  y: += 200
+
+FixtureBonus:
+  extends: Fixture
+  y: += 100
+  x: -= 20
+  font: Fira Mono
+  font_size: 24
+
+FixtureBonusType:
+  extends: FixtureBonus
+  x: 405
+  y: -= 5
+  width: 50
+  height: 50
