@@ -4,6 +4,10 @@ sudo: true # need this for libgirepository1.0-dev
 # sudo: false # taking advantage of container-based infrastructure
 cache: bundler # cache bundled gems from build to build
 
+branches:
+  only:
+  - master
+
 addons:
   apt:
     packages:
@@ -13,8 +17,18 @@ rvm: 2.4.0
 
 install:
   - bundle install
-  - sudo pip install ghp-import
 
 script:
   - bundle exec rake
-  - ghp-import -p _output
+
+after_success: |
+  if [ -n "$GITHUB_API_KEY" ]; then
+    cd "$TRAVIS_BUILD_DIR"
+    cd _output
+    git init
+    git checkout -b gh-pages
+    git add .
+    git -c user.name='travis' -c user.email='travis' commit -m init
+    git push -f -q https://<me>:$GITHUB_API_KEY@github.com/<me>/<myrepo>-gh-pages gh-pages &2>/dev/null
+    cd "$TRAVIS_BUILD_DIR"
+  fi
