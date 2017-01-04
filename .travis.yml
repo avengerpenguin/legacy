@@ -1,4 +1,8 @@
 language: ruby
+
+before_install:
+  - rvm install 2.4.0
+
 install:
   - bundle install
   - pip install ghp-import
