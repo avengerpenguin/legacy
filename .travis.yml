@@ -17,4 +17,4 @@ install:
 
 script:
   - bundle exec rake
-  - ghp-import _output
+  - ghp-import -p _output
