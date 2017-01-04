@@ -1,14 +1,18 @@
-language: python
+dist: trusty
+language: ruby
+sudo: true # need this for libgirepository1.0-dev
+# sudo: false # taking advantage of container-based infrastructure
+cache: bundler # cache bundled gems from build to build
 
-python:
-  - "3.5"
+addons:
+  apt:
+    packages:
+      - libgirepository1.0-dev # for gobject-introspection
 
-before_install:
-  - sudo apt-get install -V -y libgirepository1.0-dev
-  - rvm install 2.4.0
+rvm: 2.4.0
 
 install:
   - bundle install
-  - pip install ghp-import
+  - sudo pip install ghp-import
 
 script: bundle exec rake deck page && ghp-import _output
