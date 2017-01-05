@@ -4,18 +4,21 @@ digraph g {
     // Opportunities
     subgraph cluster_opportunities {
         label="Opportunities";
-        trading [label="New Land\nNew land discovered with trading opportunities.\nAll players with wealth of 10 or greater are known as Merchants.\nAll players with Charm 10 or higher are known as Ambassadors."];
-        magic_legal [label="Magic Ban Lifted\nMagical practice is on the rise again and a ban on its use in the realm is reconsidered.\nAll players with magic of 10 or higher can be officially known as Wizards."];
-        dragon_appears [label="Dragon Appears\nThe rise in magic use causes dragons to awake from hibernation.\nAll players with magic of 10 or higher are consulted by\nthe leaders of the land and officially recognised as Wizards."];
-        champion_warrior [label="Grand Tournament\nThe King of the Realm announces a tournament.\nThe player with the highest strength is named Champion Warrior."];
-        unpopular_leader [label="The Republic's chancellor raises taxes and approval drops.\nThe person with the highest Charm is elected Opposition Leader."];
+        trading [color=gold,label="New Land\nNew land discovered with trading opportunities.\nAll players with wealth of 10 or greater are known as Merchants.\nAll players with Charm 10 or higher are known as Ambassadors."];
+        magic_legal [color=purple,label="Magic Ban Lifted\nMagical practice is on the rise again and a ban on its use in the realm is reconsidered.\nAll players with magic of 10 or higher can be officially known as Wizards."];
+        dragon_appears [color=purple,label="Dragon Appears\nThe rise in magic use causes dragons to awake from hibernation.\nAll players with magic of 10 or higher are consulted by\nthe leaders of the land and officially recognised as Wizards."];
+        champion_warrior [color=red,label="Grand Tournament\nThe King of the Realm announces a tournament.\nThe player with the highest strength is named Champion Warrior."];
+        unpopular_leader [color=blue,label="The Republic's chancellor raises taxes and approval drops.\nThe person with the highest Charm is elected Opposition Leader."];
+        knight_academy [color=red,label="Knight Academy\nRegistration opens for skilled fighters to train to be knights of the realm.\nAll players may choose to become a Warrior when their strength exceeds 10."];
     }
 
     // Agenda
     subgraph cluster_agenda {
         label="Agenda";
-        dragon_quest [label="Mage Knight\nYou reveal enough Magic power to give you the ability to fight magical creatures such as dragons.\nPlay this if 'Dragon Appears' is in play and\nimmediately reveal 10 or more Magic bonus from your face-down agenda cards.\nYou are now known as a Mage Knight."];
-        underground_rebellion [label="Your influence and warrior status creates an army loyal to you (Revolutionary Warrior)"];
+        dragon_quest [color=purple,label="Mage Knight\nYou reveal enough Magic power to give you the ability to fight magical creatures such as dragons.\nPlay this if 'Dragon Appears' is in play and\nall Warriors may reveal 10 or more Magic bonus from their face-down agenda cards.\They are now known as Mage Knights."];
+        underground_rebellion [color=blue,label="Your influence and warrior status creates an army loyal to you (Revolutionary Warrior)"];
+        assassination [color=black,label="Assassination\nThe Republic's chancellor is assassinated.\nPlay this card and reveal at least 10 Shadow bonus points by revealing face-down agenda cards in play.\nYou are now a Usurper."];
+        tame_dragon [color=red,label="Tame the Dragon\nYou do battle the dragon until you are able to tame it to work for you.\nReveal at least 10 Strength from your face-down agenda stack.\nYou are now a Dragon Lord."];
     }
 
     // Legacies
@@ -30,8 +33,11 @@ digraph g {
 
     // Paths
     dragon_appears -> dragon_quest;
+    dragon_appears -> tame_dragon;
     dragon_quest -> slay_dragon;
+    knight_academy -> dragon_quest;
+    champion_warrior -> dragon_quest;
     champion_warrior -> underground_rebellion;
     underground_rebellion -> coup;
-
+    unpopular_leader -> assassination;
 }
