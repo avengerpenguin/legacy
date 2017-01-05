@@ -1,0 +1,40 @@
+digraph g {
+    rankdir=LR;
+
+    // Opportunities
+    subgraph cluster_opportunities {
+        label="Opportunities";
+        trading [label="New land discovered with trading opportunities"];
+        magic_legal [label="Magic ban lifted in Kingdom"];
+        dragon_appears [label="Dragon appears despite being presumed extinct"];
+        champion_warrior [label="You win a fighting tournament"];
+    }
+
+    // Agenda
+    subgraph cluster_agenda {
+        label="Agenda";
+        buyout [label="Buy all existing trading companies"];
+        dragon_quest [label="King appoints you to slay the dragon"];
+        underground_rebellion [label="Your influence and warrior status creates an army loyal to you"];
+    }
+
+    // Legacies
+    subgraph cluster_legacies {
+        label="Legacies";
+        monopoly [label="Establish a monopoly over global trading"];
+        slay_dragon [label="Kill a dragon"];
+        elected [label="Elected leader of the Republic"];
+        coup [label="Lead a coup d'état"];
+        revolution [label="Lead a revolution"];
+    }
+
+    // Paths
+    dragon_appears -> dragon_quest;
+    dragon_quest -> slay_dragon;
+    champion_warrior -> underground_rebellion;
+    champion_warrior -> dragon_quest;
+    trading -> buyout;
+    buyout -> monopoly;
+    underground_rebellion -> coup;
+
+}
