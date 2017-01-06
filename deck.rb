@@ -1,6 +1,6 @@
 require 'squib'
 
-Squib::Deck.new(layout: 'layouts/layout-fortune.yml') do
+Squib::Deck.new(cards: 2, layout: 'layouts/layout-fortune.yml') do
   background color: 'white'
   data = csv file: 'data/fortunes.csv'
 

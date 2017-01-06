@@ -1,2 +1,3 @@
 title,icon,temp_title,temp_bonus,temp_type,perm_title,perm_bonus,perm_type
 Find a sword,icons/katana.svg,Sell it,5,icons/crown-coin.svg,Keep it,2,icons/crossed-swords.svg
+Find a magic book,icons/enlightenment.svg,Sell it,8,icons/crown-coin.svg,Keep it,3,icons/fairy-wand.svg
