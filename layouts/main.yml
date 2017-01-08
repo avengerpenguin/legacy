@@ -29,7 +29,7 @@ Type:
 OneshotBonus:
   extends: Oneshot
   y: += 100
-  x: -= 20
+  x: -= 25
   font: Fira Mono
   font_size: 24
 
@@ -47,7 +47,7 @@ Fixture:
 FixtureBonus:
   extends: Fixture
   y: += 100
-  x: -= 20
+  x: -= 25
   font: Fira Mono
   font_size: 24
 
