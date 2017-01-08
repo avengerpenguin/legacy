@@ -30,6 +30,8 @@ in terms of bonuses.
 negative outcome. If you have a sufficient level of any traits required by
 the challenge, you will come out with a strong bonus. If you cannot meet
 the required levels, some negative consequence must be played out.
+* **Experience** -- these are things you choose to do or go through to come
+out stronger afterwards.
 
 ## Legacy Deck
 
