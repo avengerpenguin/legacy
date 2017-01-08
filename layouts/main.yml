@@ -1,20 +1,30 @@
-title:
-  x: 90
-  y: 25
-  width: 635
-  height: 50
-  align: center
-  font: Rock Salt
-  font_size: 36
+Picture:
+  width: 425
+  height: 425
+  x: 200
+  y: 200
 
-Oneshot:
-  x: 90
-  y: 645
-  width: 635
+CentreText:
+  x: 0
+  y: 0
+  width: 825
   height: 50
   align: center
   font: Rock Salt
   font_size: 32
+
+Oneshot:
+  extends: CentreText
+  y: 665
+
+Title:
+  extends: CentreText
+  font_size: 36
+
+Type:
+  extends: Title
+  y: += 80
+  font_size: 16
 
 OneshotBonus:
   extends: Oneshot
@@ -31,8 +41,8 @@ OneshotBonusType:
   height: 50
 
 Fixture:
-  extends: Oneshot
-  y: += 200
+  extends: CentreText
+  y: 40
 
 FixtureBonus:
   extends: Fixture
@@ -47,3 +57,14 @@ FixtureBonusType:
   y: -= 5
   width: 50
   height: 50
+
+RuleText:
+  extends: CentreText
+  y: 665
+  align: left
+  width: 725
+  height: 200
+  x: 50
+  font: Fira Mono
+  font_size: 24
+  wrap: word_char
