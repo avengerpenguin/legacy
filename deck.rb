@@ -1,8 +1,8 @@
 require 'squib'
 
-Squib::Deck.new(cards: 2, layout: 'layouts/layout-fortune.yml') do
+Squib::Deck.new(cards: 2, layout: 'layouts/item.yml') do
   background color: 'white'
-  data = csv file: 'data/fortunes.csv'
+  data = csv file: 'data/item.csv'
 
   text str: data['title'], layout: 'title'
   svg file: data['icon'],
