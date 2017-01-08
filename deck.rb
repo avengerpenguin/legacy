@@ -121,3 +121,18 @@ Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
 
   save_png prefix: '2-experience-'
 end
+
+Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
+  background color: 'white'
+  data = csv file: 'data/opportunities.csv'
+
+  text str: data['title'], layout: 'Title'
+  text str: 'Opportunity', layout: 'Type'
+  svg file: data['icon'], layout: 'Picture'
+
+  rect x: 30, y: 650, width: 765, height: 450, radius: 8
+
+  text str: data['ability_text'], layout: 'RuleText'
+
+  save_png prefix: '3-opportunity-'
+end
