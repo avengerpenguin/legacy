@@ -63,7 +63,7 @@ RuleText:
   y: 665
   align: left
   width: 725
-  height: 200
+  height: 400
   x: 50
   font: Fira Mono
   font_size: 24
