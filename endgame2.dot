@@ -1,0 +1,154 @@
+digraph g {
+    rankdir=LR;
+
+    subgraph cluster_traits {
+        label="Traits";
+        Strength;
+        Magic;
+        Shadow;
+        Wealth;
+        Influence;
+        Knowledge;
+    }
+
+
+    // Opportunities
+    subgraph cluster_opportunities {
+        label="Opportunities";
+
+        opp_strength_magic;
+        opp_strength_shadow;
+        opp_strength_wealth;
+        opp_strength_influence;
+        opp_strength_knowledge;
+        opp_magic_shadow;
+        opp_magic_wealth;
+        opp_magic_influence;
+        opp_magic_knowledge;
+        opp_shadow_wealth;
+        opp_shadow_influence;
+        opp_shadow_knowledge;
+        opp_wealth_influence;
+        opp_wealth_knowledge;
+        opp_influence_knowledge;
+    }
+
+    Strength -> opp_strength_magic;
+    Strength -> opp_strength_shadow;
+    Strength -> opp_strength_wealth;
+    Strength -> opp_strength_influence;
+    Strength -> opp_strength_knowledge;
+
+    Magic -> opp_magic_shadow;
+    Magic -> opp_magic_wealth;
+    Magic -> opp_magic_influence;
+    Magic -> opp_magic_knowledge;
+    Magic -> opp_strength_magic;
+
+    subgraph cluster_roles {
+        label="Roles";
+
+        Warrior;
+        Knight;
+    }
+
+    opp_strength_magic -> Knight;
+
+    // Agenda
+    subgraph cluster_agenda {
+        label="Agenda";
+
+        ag_strength_magic;
+        ag_strength_shadow;
+        ag_strength_wealth;
+        ag_strength_influence;
+        ag_strength_knowledge;
+        ag_magic_shadow;
+        ag_magic_wealth;
+        ag_magic_influence;
+        ag_magic_knowledge;
+        ag_shadow_wealth;
+        ag_shadow_influence;
+        ag_shadow_knowledge;
+        ag_wealth_influence;
+        ag_wealth_knowledge;
+        ag_influence_knowledge;
+
+    }
+
+    Warrior-
+
+    subgraph cluster_specialist_roles {
+        label="Specialist Roles";
+
+        revolutionary_warrior;
+        mage_knight;
+    }
+
+
+
+    // Legacies
+    subgraph cluster_legacies {
+        label="Legacies";
+
+        monopoly [label="Establish a monopoly over global trading"];
+        slay_dragon [label="Kill a dragon (Dragon Slayer)"];
+        elected [label="Elected leader of the Republic"];
+        coup [label="Lead a coup d'état"];
+        revolution [label="Lead a revolution"];
+    }
+
+    // Paths
+    dragon_appears -> dragon_quest;
+    dragon_appears -> tame_dragon;
+    dragon_quest -> slay_dragon;
+    knight_academy -> dragon_quest;
+    champion_warrior -> dragon_quest;
+    champion_warrior -> underground_rebellion;
+    underground_rebellion -> coup;
+    unpopular_leader -> assassination;
+}
+
+
+
+
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::878276681969:role/x509/Cloud_Production_Servers_and_Services"
+      },
+      "Action": "es:*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::896406479331:user/nfr",
+          "AROAJ7BI3PLPD2V3ZJWAM"
+        ]
+      },
+      "Action": "es:*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "es:*",
+      "Resource": "*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": [
+            "132.185.0.0/16",
+            "212.58.224.0/19"
+          ]
+        }
+      }
+    }
+  ]
+}
