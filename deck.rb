@@ -1,6 +1,11 @@
 require 'squib'
 
-Squib::Deck.new(cards: 2, layout: 'layouts/main.yml') do
+data_items = Squib.csv file: 'data/items.csv'
+data_events = Squib.csv file: 'data/events.csv'
+
+deck1_size = data_items.nrows + data_events.nrows
+
+Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   background color: 'white'
   data = csv file: 'data/items.csv'
 
@@ -8,7 +13,15 @@ Squib::Deck.new(cards: 2, layout: 'layouts/main.yml') do
   text str: 'Item', layout: 'Type'
   svg file: data['icon'], layout: 'Picture'
 
-  rect x: 30, y: 650, width: 765, height: 450, radius: 8
+  bleed = inches(0.125)
+  rect x: bleed, y: bleed,
+       width: inches(2.5), height: inches(3.5), dash: '0.5mm 0.5mm'
+
+  safe = inches(0.25)
+  rect x: safe, y: safe,
+       width: inches(2.25), height: inches(3.25), dash: '0.1mm 0.1mm'
+
+  rect x: 100, y: 650, width: 625, height: 375, radius: 8
 
   text str: data['temp_title'], layout: 'Oneshot'
   text str: data['temp_bonus'], layout: 'OneshotBonus'
@@ -143,6 +156,8 @@ Squib::Deck.new(cards: deck3_size, layout: 'layouts/main.yml') do
   rect x: safe, y: safe,
        width: inches(2.25), height: inches(3.25), dash: '0.1mm 0.1mm'
 
+  rect x: 100, y: 650, width: 625, height: 375, radius: 8
+
    text str: data_opportunity['title'].concat(data_agenda['title'].concat(
       data_legacy['title'])), layout:
       'Title'
@@ -150,7 +165,6 @@ Squib::Deck.new(cards: deck3_size, layout: 'layouts/main.yml') do
   svg file: data_opportunity['icon'].concat(data_agenda['icon'].concat(
       data_legacy['icon'])), layout: 'Picture'
 
-  rect x: 100, y: 650, width: 625, height: 375, radius: 8
 
   icon_size = 30
   text(str: data_opportunity['ability_text']
@@ -167,47 +181,3 @@ Squib::Deck.new(cards: deck3_size, layout: 'layouts/main.yml') do
   save_png prefix: types.map{|x| "3-#{x}-"}
   save_sheet prefix: 'sheet-3-', rows: 4, columns: 4
 end
-#
-# Squib::Deck.new(cards: 31, layout: 'layouts/main.yml') do
-#   background color: 'white'
-#   data = csv file: 'data/agendas.csv'
-#
-#   text str: data['title'], layout: 'Title'
-#   text str: 'Agenda', layout: 'Type'
-#   svg file: data['icon'], layout: 'Picture'
-#
-#   rect x: 30, y: 650, width: 765, height: 450, radius: 8
-#
-#   text(str: data['ability_text'], layout: 'RuleText') do |embed|
-#     embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: 40, height: 40
-#     embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: 40, height: 40
-#     embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: 40, height: 40
-#     embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: 40, height: 40
-#     embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: 40, height: 40
-#     embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: 40, height: 40
-#   end
-#
-#   save_png prefix: '3-agenda-'
-# end
-#
-# Squib::Deck.new(cards: 181, layout: 'layouts/main.yml') do
-#   background color: 'white'
-#   data = csv file: 'data/legacies.csv'
-#
-#   text str: data['title'], layout: 'Title'
-#   text str: 'Legacy', layout: 'Type'
-#   svg file: data['icon'], layout: 'Picture'
-#
-#   rect x: 30, y: 650, width: 765, height: 450, radius: 8
-#
-#   text(str: data['ability_text'], layout: 'RuleText') do |embed|
-#     embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: 40, height: 40
-#     embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: 40, height: 40
-#     embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: 40, height: 40
-#     embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: 40, height: 40
-#     embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: 40, height: 40
-#     embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: 40, height: 40
-#   end
-#
-#   save_png prefix: '3-legacy-'
-# end
