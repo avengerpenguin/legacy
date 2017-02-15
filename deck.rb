@@ -144,7 +144,7 @@ Squib::Deck.new(cards: 31, layout: 'layouts/main.yml') do
   save_png prefix: '3-opportunity-'
 end
 
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
+Squib::Deck.new(cards: 31, layout: 'layouts/main.yml') do
   background color: 'white'
   data = csv file: 'data/agendas.csv'
 
@@ -154,12 +154,19 @@ Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
 
   rect x: 30, y: 650, width: 765, height: 450, radius: 8
 
-  text str: data['ability_text'], layout: 'RuleText'
+  text(str: data['ability_text'], layout: 'RuleText') do |embed|
+    embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: 40, height: 40
+    embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: 40, height: 40
+    embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: 40, height: 40
+    embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: 40, height: 40
+    embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: 40, height: 40
+    embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: 40, height: 40
+  end
 
   save_png prefix: '3-agenda-'
 end
 
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
+Squib::Deck.new(cards: 181, layout: 'layouts/main.yml') do
   background color: 'white'
   data = csv file: 'data/legacies.csv'
 
@@ -170,7 +177,12 @@ Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
   rect x: 30, y: 650, width: 765, height: 450, radius: 8
 
   text(str: data['ability_text'], layout: 'RuleText') do |embed|
-    embed.svg key: 'Strength', file: 'icons/crossed-swords.svg'
+    embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: 40, height: 40
+    embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: 40, height: 40
+    embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: 40, height: 40
+    embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: 40, height: 40
+    embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: 40, height: 40
+    embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: 40, height: 40
   end
 
   save_png prefix: '3-legacy-'
