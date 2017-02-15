@@ -5,9 +5,9 @@ Picture:
   y: 200
 
 CentreText:
-  x: 0
-  y: 0
-  width: 825
+  x: 75
+  y: 75
+  width: 675
   height: 50
   align: center
   font: Rock Salt
@@ -62,9 +62,9 @@ RuleText:
   extends: CentreText
   y: 665
   align: left
-  width: 725
+  width: 585
   height: 400
-  x: 50
+  x: 120
   font: Fira Mono
-  font_size: 24
+  font_size: 20
   wrap: word_char
