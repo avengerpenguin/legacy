@@ -1,17 +1,35 @@
 import csv
 
-
+icons = {
+    'Strength': 'icons/crossed-swords.svg',
+    'Magic': 'icons/fairy-wand.svg',
+    'Wealth': 'icons/crown-coin.svg',
+    'Shadow': 'icons/cowled.svg',
+    'Knowledge': 'icons/white-book.svg',
+    'Influence': 'icons/public-speaker.svg',
+}
 traits = ['Strength', 'Magic', 'Shadow', 'Influence', 'Wealth', 'Knowledge']
 
-with open('it-generated.csv', 'wb') as csvfile:
+with open('items-generated.csv', 'wb') as csvfile:
     writer = csv.writer(csvfile, delimiter=',',
                         quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    for trait in traits:
-        writer.writerow([
-            title,icon,temp_title,temp_bonus,temp_type,
-            perm_title,perm_bonus,perm_type
-        ])
+    for x in range(1, 4):
+        for t1 in traits:
+            for t2 in traits:
+                title = 'Item'
+                icon = 'icons/sword-smithing.svg'
+                temp_title = 'Use it'
+                temp_bonus = str(2 * x)
+                temp_type = icons[t1]
+                perm_title = 'Keep it'
+                perm_bonus = str(x)
+                perm_type = icons[t2]
+                writer.writerow([
+                    title,icon,
+                    temp_title,temp_bonus,temp_type,
+                    perm_title,perm_bonus,perm_type
+                ])
 
 
 classes = ['Warrior', 'Wizard', 'Rogue', 'Patrician', 'Merchant', 'Scholar']
