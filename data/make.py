@@ -2,6 +2,18 @@ import csv
 
 
 traits = ['Strength', 'Magic', 'Shadow', 'Influence', 'Wealth', 'Knowledge']
+
+with open('it-generated.csv', 'wb') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',',
+                        quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    for trait in traits:
+        writer.writerow([
+            title,icon,temp_title,temp_bonus,temp_type,
+            perm_title,perm_bonus,perm_type
+        ])
+
+
 classes = ['Warrior', 'Wizard', 'Rogue', 'Patrician', 'Merchant', 'Scholar']
 specialisms = {
     'Warrior': {
