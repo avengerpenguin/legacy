@@ -29,5 +29,5 @@ after_success: |
     git checkout -b gh-pages
     git add .
     git -c user.name='travis' -c user.email='travis' commit -m init
-    git push -f -q https://avengerpenguin:$GITHUB_API_KEY@github.com/<me>/<myrepo>-gh-pages gh-pages
+    git push -f -q https://avengerpenguin:$GITHUB_API_KEY@github.com/avengerpenguin/legacy gh-pages
   fi
