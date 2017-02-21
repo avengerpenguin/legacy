@@ -31,7 +31,7 @@ Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   text str: data['perm_bonus'], layout: 'FixtureBonus'
   svg file: data['perm_type'], layout: 'FixtureBonusType'
 
-  save_png prefix: '1-item-'
+  save_png prefix: '1-item-', count_format: '%03d'
 end
 
 Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
