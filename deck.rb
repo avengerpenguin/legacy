@@ -32,6 +32,7 @@ Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   svg file: data['perm_type'], layout: 'FixtureBonusType'
 
   save_png prefix: '1-item-', count_format: '%03d'
+  save_sheet prefix: 'sheet-1-', rows: 4, columns: 4
 end
 
 Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
