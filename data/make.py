@@ -20,16 +20,42 @@ with open('items-generated.csv', 'wb') as csvfile:
                 title = 'Item'
                 icon = 'icons/sword-smithing.svg'
                 temp_title = 'Use it'
-                temp_bonus = str(2 * x)
+                temp_bonus = str(2 * x).encode('utf-8')
                 temp_type = icons[t1]
                 perm_title = 'Keep it'
-                perm_bonus = str(x)
+                perm_bonus = str(x).encode('utf-8')
                 perm_type = icons[t2]
                 writer.writerow([
                     title,icon,
                     temp_title,temp_bonus,temp_type,
                     perm_title,perm_bonus,perm_type
                 ])
+
+
+with open('deck-2-growth-generated.csv', 'wb') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',',
+                        quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    card_type = 'Challenge'
+
+    for gain in range(4, 7):
+        for t1 in traits:
+            for t2 in traits:
+                title = 'Challenge'
+                icon = 'icons/life-in-the-balance.svg'
+
+                text = 'A challenge appears. If you have {cost} or more {' \
+                       't1}, you may keep this card for a boost of {cost} {' \
+                       't1}. If you do not, you must lose {fine} {t2}'.format(
+                    t1=t1, t2=t2, cost=gain*2, fine=gain
+                )
+
+                writer.writerow([
+                    card_type,
+                    title,icon,
+                    text
+                ])
+
 
 
 classes = ['Warrior', 'Wizard', 'Rogue', 'Patrician', 'Merchant', 'Scholar']

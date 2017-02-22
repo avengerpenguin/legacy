@@ -1,7 +1,7 @@
 require 'squib'
 
 data_items = Squib.csv file: 'data/items.csv'
-data_events = Squib.csv file: 'data/events.csv'
+#data_events = Squib.csv file: 'data/events.csv'
 
 Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   background color: 'white'
@@ -34,97 +34,41 @@ Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
 end
 
 
+data_growth = Squib.csv file: 'data/deck-2-growth.csv'
 
 
-
-
-
-
-
-
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
+Squib::Deck.new(cards: data_growth.nrows, layout: 'layouts/main.yml') do
   background color: 'white'
-  data = csv file: 'data/events.csv'
 
-  text str: data['title'], layout: 'Title'
-  text str: 'Event', layout: 'Type'
-  svg file: data['icon'], layout: 'Picture'
+  text str: data_growth['title'], layout: 'Title'
+  text str: data_growth['type'], layout: 'Type'
+  svg file: data_growth['icon'], layout: 'Picture'
 
   rect x: 30, y: 650, width: 765, height: 450, radius: 8
 
-  text str: data['ignore_text'], layout: 'Oneshot'
+  icon_size = 30
+  text(str: data_growth['ability_text'], layout: 'RuleText') do |embed|
+    embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: icon_size, height: icon_size
+    embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: icon_size, height: icon_size
+    embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: icon_size, height: icon_size
+    embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: icon_size, height: icon_size
+    embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: icon_size, height: icon_size
+    embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: icon_size, height: icon_size
+  end
 
-  text str: data['perm_bonus'], layout: 'FixtureBonus'
-  svg file: data['perm_type'], layout: 'FixtureBonusType'
 
-  save_png prefix: '1-event-'
+  save_png prefix: '2-challenge-', count_format: '%03d'
+  save_sheet prefix: 'sheet-1-', rows: 4, columns: 4
 end
 
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
-  background color: 'white'
-  data = csv file: 'data/buildings.csv'
 
-  text str: data['title'], layout: 'Title'
-  text str: 'Building', layout: 'Type'
-  svg file: data['icon'], layout: 'Picture'
 
-  rect x: 30, y: 650, width: 765, height: 450, radius: 8
 
-  text str: data['ability_text'], layout: 'RuleText'
 
-  text str: data['perm_bonus'], layout: 'FixtureBonus'
-  svg file: data['perm_type'], layout: 'FixtureBonusType'
 
-  save_png prefix: '2-building-'
-end
 
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
-  background color: 'white'
-  data = csv file: 'data/people.csv'
 
-  text str: data['title'], layout: 'Title'
-  text str: 'Person', layout: 'Type'
-  svg file: data['icon'], layout: 'Picture'
 
-  rect x: 30, y: 650, width: 765, height: 450, radius: 8
-
-  text str: data['ability_text'], layout: 'RuleText'
-
-  save_png prefix: '2-person-'
-end
-
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
-  background color: 'white'
-  data = csv file: 'data/premium-items.csv'
-
-  text str: data['title'], layout: 'Title'
-  text str: 'Premium Item', layout: 'Type'
-  svg file: data['icon'], layout: 'Picture'
-
-  rect x: 30, y: 650, width: 765, height: 450, radius: 8
-
-  text str: data['ability_text'], layout: 'RuleText'
-
-  text str: data['perm_bonus'], layout: 'FixtureBonus'
-  svg file: data['perm_type'], layout: 'FixtureBonusType'
-
-  save_png prefix: '2-premium-'
-end
-
-Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
-  background color: 'white'
-  data = csv file: 'data/challenges.csv'
-
-  text str: data['title'], layout: 'Title'
-  text str: 'Challenge', layout: 'Type'
-  svg file: data['icon'], layout: 'Picture'
-
-  rect x: 30, y: 650, width: 765, height: 450, radius: 8
-
-  text str: data['ability_text'], layout: 'RuleText'
-
-  save_png prefix: '2-challenge-'
-end
 
 Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
   background color: 'white'
