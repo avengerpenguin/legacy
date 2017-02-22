@@ -15,7 +15,7 @@ CentreText:
 
 Oneshot:
   extends: CentreText
-  y: 665
+  y: 820
 
 Title:
   extends: CentreText
@@ -42,7 +42,7 @@ OneshotBonusType:
 
 Fixture:
   extends: CentreText
-  y: 40
+  y: 665
 
 FixtureBonus:
   extends: Fixture

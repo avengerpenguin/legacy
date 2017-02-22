@@ -3,8 +3,6 @@ require 'squib'
 data_items = Squib.csv file: 'data/items.csv'
 data_events = Squib.csv file: 'data/events.csv'
 
-deck1_size = data_items.nrows + data_events.nrows
-
 Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   background color: 'white'
   data = csv file: 'data/items.csv'
@@ -27,13 +25,22 @@ Squib::Deck.new(cards: data_items.nrows, layout: 'layouts/main.yml') do
   text str: data['temp_bonus'], layout: 'OneshotBonus'
   svg file: data['temp_type'], layout: 'OneshotBonusType'
 
-  #text str: data['perm_title'], layout: 'Fixture'
+  text str: data['perm_title'], layout: 'Fixture'
   text str: data['perm_bonus'], layout: 'FixtureBonus'
   svg file: data['perm_type'], layout: 'FixtureBonusType'
 
   save_png prefix: '1-item-', count_format: '%03d'
   save_sheet prefix: 'sheet-1-', rows: 4, columns: 4
 end
+
+
+
+
+
+
+
+
+
 
 Squib::Deck.new(cards: 1, layout: 'layouts/main.yml') do
   background color: 'white'

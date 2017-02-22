@@ -13,7 +13,7 @@ task :page do
 <body>
 <h1> Legacy cards</h1>
 <ul>
-#{Dir["_output/*.png"].map { |s| "<li><a href=\"#{File.basename(s)}\">#{File.basename(s)}</a></li>"}.join "\n"}
+#{Dir["_output/*.png"].sort.map { |s| "<li><a href=\"#{File.basename(s) }\">#{File.basename(s)}</a></li>"}.join "\n"}
 </ul>
 </body>
 </html>
