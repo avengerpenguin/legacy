@@ -58,7 +58,7 @@ Squib::Deck.new(cards: data_growth.nrows, layout: 'layouts/main.yml') do
 
 
   save_png prefix: '2-challenge-', count_format: '%03d'
-  save_sheet prefix: 'sheet-1-', rows: 4, columns: 4
+  save_sheet prefix: 'sheet-2-', rows: 4, columns: 4
 end
 
 
