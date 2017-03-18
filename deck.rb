@@ -57,7 +57,8 @@ gids.each_index do |index|
     end
 
     save_sheet prefix: "sheet-#{index}-", rows: 4, columns: 4
-end
+
+  end
 
 end
 

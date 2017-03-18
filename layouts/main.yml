@@ -72,6 +72,29 @@ Cost:
   extends: "One-time Bonus"
   y: += 40
 
+Text:
+  extends: CentreText
+  y: 680
+  align: left
+  width: 585
+  height: 400
+  x: 120
+  font: Fira Mono
+  font_size: 20
+  wrap: word_char
+
+"Entry Action":
+  extends: Text
+  y: += 80
+
+"Static Effect":
+  extends: Text
+  y: += 160
+
+"Exit Action":
+  extends: Text
+  y: += 240
+
 #OneshotBonusType:
 #  extends: OneshotBonus
 #  x: 405
