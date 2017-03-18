@@ -1,4 +1,4 @@
-Picture:
+Icon:
   width: 425
   height: 425
   x: 200
@@ -13,10 +13,6 @@ CentreText:
   font: Rock Salt
   font_size: 32
 
-Oneshot:
-  extends: CentreText
-  y: 820
-
 Title:
   extends: CentreText
   font_size: 36
@@ -26,45 +22,56 @@ Type:
   y: += 80
   font_size: 16
 
-OneshotBonus:
-  extends: Oneshot
+Cost:
+  extends: CentreText
+  y: 650
+  font: Fira Mono
+  font_size: 24
+
+"Permanent Action":
+  extends: CentreText
+  y: 665
+
+"Permanent Bonus":
+  extends: "Permanent Action"
   y: += 100
   x: -= 25
   font: Fira Mono
   font_size: 24
 
-OneshotBonusType:
-  extends: OneshotBonus
-  x: 405
-  y: -= 5
-  width: 50
-  height: 50
-
-Fixture:
+"One-time Action":
   extends: CentreText
-  y: 665
+  y: 820
 
-FixtureBonus:
-  extends: Fixture
+"One-time Bonus":
+  extends: "One-time Action"
   y: += 100
   x: -= 25
   font: Fira Mono
   font_size: 24
 
-FixtureBonusType:
-  extends: FixtureBonus
-  x: 405
-  y: -= 5
-  width: 50
-  height: 50
+#OneshotBonusType:
+#  extends: OneshotBonus
+#  x: 405
+#  y: -= 5
+#  width: 50
+#  height: 50
 
-RuleText:
-  extends: CentreText
-  y: 665
-  align: left
-  width: 585
-  height: 400
-  x: 120
-  font: Fira Mono
-  font_size: 20
-  wrap: word_char
+
+#FixtureBonusType:
+#  extends: FixtureBonus
+#  x: 405
+#  y: -= 5
+#  width: 50
+#  height: 50
+
+#RuleText:
+#  extends: CentreText
+#  y: 665
+#  align: left
+#  width: 585
+#  height: 400
+#  x: 120
+#  font: Fira Mono
+#  font_size: 20
+#  wrap: word_char

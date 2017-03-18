@@ -10,54 +10,52 @@ end
 
 icon_size = 30
 
-
-data = get_from_google 0
-
-
-Squib::Deck.new(cards: data.nrows, layout: 'layouts/main.yml') do
-  background color: 'white'
-
-  text str: data['Title'], layout: 'Title'
-  text str: data['Type'], layout: 'Type'
-  svg file: data['Icon'].map{|x| "icons/#{x}.svg"}, layout: 'Picture'
-
-  bleed = inches(0.125)
-  rect x: bleed, y: bleed,
-       width: inches(2.5), height: inches(3.5), dash: '0.5mm 0.5mm'
-
-  safe = inches(0.25)
-  rect x: safe, y: safe,
-       width: inches(2.25), height: inches(3.25), dash: '0.1mm 0.1mm'
-
-  rect x: 100, y: 650, width: 625, height: 375, radius: 8
-
-  text str: data['One-time Action'], layout: 'Oneshot'
-  text str: data['One-time Bonus'], layout: 'OneshotBonus' do |embed|
+icon_replace = Proc.new  do |embed|
     embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: icon_size, height: icon_size
     embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: icon_size, height: icon_size
     embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: icon_size, height: icon_size
     embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: icon_size, height: icon_size
     embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: icon_size, height: icon_size
     embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: icon_size, height: icon_size
-  end
-
-  text str: data['Permanent Action'], layout: 'Fixture'
-  text str: data['Permanent Bonus'], layout: 'FixtureBonus' do |embed|
-    embed.svg key: 'Strength', file: 'icons/crossed-swords.svg', width: icon_size, height: icon_size
-    embed.svg key: 'Magic', file: 'icons/fairy-wand.svg', width: icon_size, height: icon_size
-    embed.svg key: 'Wealth', file: 'icons/crown-coin.svg', width: icon_size, height: icon_size
-    embed.svg key: 'Shadow', file: 'icons/cowled.svg', width: icon_size, height: icon_size
-    embed.svg key: 'Knowledge', file: 'icons/white-book.svg', width: icon_size, height: icon_size
-    embed.svg key: 'Influence', file: 'icons/public-speaker.svg', width: icon_size, height: icon_size
-  end
-
-  #save_png prefix: '1-item-', count_format: '%03d'
-  save_sheet prefix: 'sheet-1-', rows: 4, columns: 4
 end
 
 
+gids = ['0', '1654442762']
+
+gids.each_index do |index|
+
+  data = get_from_google gids[index]
+
+  Squib::Deck.new(cards: data.nrows, layout: 'layouts/main.yml') do
+    background color: 'white'
+
+    bleed = inches(0.125)
+    rect x: bleed, y: bleed,
+         width: inches(2.5), height: inches(3.5), dash: '0.5mm 0.5mm'
+
+    safe = inches(0.25)
+    rect x: safe, y: safe,
+       width: inches(2.25), height: inches(3.25), dash: '0.1mm 0.1mm'
+
+    rect x: 100, y: 650, width: 625, height: 375, radius: 8
+
+    data.columns.each do |column|
+      if column == 'Icon'
+        svg file: data[column].map{|x| "icons/#{x}.svg"}, layout: column
+      else
+        text str: data[column], layout: column, &icon_replace
+      end
+    end
+
+    save_sheet prefix: "sheet-#{index}-", rows: 4, columns: 4
+end
+
+end
+
+=begin
+
 data_growth = Squib.csv file: 'data/deck-2-growth.csv'
-data = get_from_google 1
+data = get_from_google 1654442762
 
 
 Squib::Deck.new(cards: data_growth.nrows, layout: 'layouts/main.yml') do
@@ -83,7 +81,6 @@ Squib::Deck.new(cards: data_growth.nrows, layout: 'layouts/main.yml') do
   save_png prefix: '2-challenge-', count_format: '%03d'
   save_sheet prefix: 'sheet-2-', rows: 4, columns: 4
 end
-
 
 
 
@@ -155,3 +152,5 @@ Squib::Deck.new(cards: deck3_size, layout: 'layouts/main.yml') do
   save_png prefix: types.map{|x| "3-#{x}-"}
   save_sheet prefix: 'sheet-3-', rows: 4, columns: 4
 end
+
+=end
