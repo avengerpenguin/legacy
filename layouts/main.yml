@@ -22,11 +22,16 @@ Type:
   y: += 80
   font_size: 16
 
+"Cost Title":
+  extends: "One-time Action"
+
 Cost:
   extends: CentreText
-  y: 650
+  align: right
   font: Fira Mono
   font_size: 24
+  y:  += 20
+  x: -= 20
 
 "Permanent Action":
   extends: CentreText
@@ -35,7 +40,6 @@ Cost:
 "Permanent Bonus":
   extends: "Permanent Action"
   y: += 100
-  x: -= 25
   font: Fira Mono
   font_size: 24
 
@@ -46,9 +50,27 @@ Cost:
 "One-time Bonus":
   extends: "One-time Action"
   y: += 100
-  x: -= 25
   font: Fira Mono
   font_size: 24
+
+"Trigger Title":
+  extends: "One-time Action"
+  y: -= 20
+
+"Trigger Action":
+  extends: "One-time Bonus"
+  width: 585
+  align: left
+  x: 120
+  y: -= 32
+  wrap: word_char
+  height: 20
+  font_size: 18
+  font: Lato
+
+"Trigger Cost":
+  extends: "One-time Bonus"
+  y: += 40
 
 #OneshotBonusType:
 #  extends: OneshotBonus

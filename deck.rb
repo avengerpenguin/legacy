@@ -41,7 +41,7 @@ gids.each_index do |index|
 
     data.columns.each do |column|
       if column == 'Icon'
-        svg file: data[column].map{|x| "icons/#{x}.svg"}, layout: column
+        svg file: data[column].map{|x| "icons/#{x}.svg" if x}, layout: column
       else
         text str: data[column], layout: column, &icon_replace
       end
@@ -81,12 +81,6 @@ Squib::Deck.new(cards: data_growth.nrows, layout: 'layouts/main.yml') do
   save_png prefix: '2-challenge-', count_format: '%03d'
   save_sheet prefix: 'sheet-2-', rows: 4, columns: 4
 end
-
-
-
-
-
-
 
 
 
