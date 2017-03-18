@@ -62,7 +62,7 @@ Cost:
   width: 585
   align: left
   x: 120
-  y: -= 32
+  y: -= 28
   wrap: word_char
   height: 20
   font_size: 18

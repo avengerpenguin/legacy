@@ -20,7 +20,16 @@ icon_replace = Proc.new  do |embed|
 end
 
 
-gids = ['0', '1654442762']
+gids = %w(
+  0
+  1654442762
+  172189516
+  1507136951
+  1137630752
+  553378969
+  1061704561
+  1179381931
+)
 
 gids.each_index do |index|
 
