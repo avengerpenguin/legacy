@@ -16,6 +16,8 @@ CentreText:
 Title:
   extends: CentreText
   font_size: 36
+  x: += 10
+  y: += 20
 
 Type:
   extends: Title
@@ -30,8 +32,8 @@ Cost:
   align: right
   font: Fira Mono
   font_size: 24
-  y:  += 20
-  x: -= 20
+  y: += 15
+  x: -= 15
 
 "Permanent Action":
   extends: CentreText
@@ -62,7 +64,6 @@ Cost:
   width: 585
   align: left
   x: 120
-  y: -= 28
   wrap: word_char
   height: 20
   font_size: 18
@@ -83,6 +84,17 @@ Text:
   font_size: 20
   wrap: word_char
 
+Requirements:
+  extends: Text
+  y: += 80
+
+"Global Requirement":
+  extends: Text
+
+"Victory Condition":
+  extends: Text
+  y: += 80
+
 "Entry Action":
   extends: Text
   y: += 80
@@ -94,6 +106,17 @@ Text:
 "Exit Action":
   extends: Text
   y: += 240
+
+"Description":
+  extends: Text
+
+"Impact":
+  extends: Text
+  y: += 80
+
+"Prevention":
+  extends: Text
+  y: += 200
 
 #OneshotBonusType:
 #  extends: OneshotBonus
